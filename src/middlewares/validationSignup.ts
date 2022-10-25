@@ -11,12 +11,12 @@ const signupSchema = yup.object().shape({
     .required("Email is required ;)"),
   password: yup
     .string()
+    .required("Password is required ;)")
     .length(8, "Your password must be 8 characters long ;)")
     .matches(
       /^((?=.*[\W]){1})(?=.*\d)((?=.*[A-Z]){1}).*$/,
       "The password must contain at least one capital letter, one number and one special character"
-    )
-    .required("Password is required ;)"),
+    ),
   confirmPassword: yup
     .string()
     .oneOf([yup.ref("password"), null], "Passwords must match 'o'")

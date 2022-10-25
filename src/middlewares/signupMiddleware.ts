@@ -14,8 +14,6 @@ class signupMiddleware {
       next();
     } catch (error) {
       if (error instanceof yup.ValidationError) {
-        console.log("mensagem: " + error.message);
-
         response.locals.status = 400;
         response.locals.message = error.message;
         next(error);

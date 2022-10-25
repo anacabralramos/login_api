@@ -10,7 +10,9 @@ const repositorySignup = async (profile: any) => {
       })
       .into("profile");
 
-    return { message: "User registered successfully!!! :D" };
+    return {
+      message: "User registered successfully!!! :D",
+    };
   } catch (error: any) {
     throw { message: `Ops! Email provided already exists 'o'` };
   }
@@ -22,8 +24,6 @@ const repositoryGetProfile = async (email: string) => {
     .table("profile")
     .where({ email: `${email}` })
     .first();
-
-  console.log(query);
 
   return query;
 };

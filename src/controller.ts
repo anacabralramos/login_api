@@ -6,10 +6,9 @@ const signup = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const profile = req.body;
     const result = await service.serviceSignup(profile);
+
     res.status(200).json(result);
   } catch (error: any) {
-    console.log({ error });
-
     res.locals.status = 409;
     res.locals.message = error.message;
 
@@ -32,14 +31,14 @@ const signin = async (req: Request, res: Response, next: NextFunction) => {
 
 const getProfile = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { authorization } = req.headers;
-    const result = await service.profile(authorization);
-    console.log(result);
+    const id = res.locals.id;
 
+    const result = await service.profile(id);
     res.status(200).json(result);
   } catch (error: any) {
     res.locals.status = 401;
     res.locals.message = error.message;
+
     next(error);
   }
 };

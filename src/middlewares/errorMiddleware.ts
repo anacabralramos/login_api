@@ -6,10 +6,7 @@ const errorHandler = (
   res: Response,
   _next: NextFunction
 ) => {
-  // console.log("midleErro");
-
-  const status = res.locals.status && 500;
-  console.log(res.locals.message);
+  const status = res.locals.status || 500;
 
   const message = res.locals.message
     ? res.locals.message

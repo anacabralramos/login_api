@@ -32,6 +32,9 @@ const serviceSignin = async (profile: any) => {
 };
 
 const profile = async (id: string) => {
+  console.log("id: ");
+  console.log(id);
+
   const user = await repository.repositoryGetProfile(id);
 
   if (!user) throw { message: `Usuário inexistente! 'o'` };
